@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot On Grooming — Boise Dog Groomer</title>
+
+<!--
+============================================================
+  LOCALWEBREADY — REUSABLE GROOMER DEMO TEMPLATE
+  To rebrand for a new business, find & replace these:
+    [BIZ_NAME]      = business name (e.g. Spot On Grooming)
+    [PHONE]         = display phone (e.g. (208) 323-9095)
+    [PHONE_RAW]     = tel: number (e.g. +12083239095)
+    [TOWN]          = town/city (e.g. Boise, Idaho)
+    [GROOMER]       = owner/groomer first name (e.g. Rachel)
+    [RATING]        = star count + reviewer count line
+  Plus: swap the 3 review quotes, the services/pricing,
+  hours, and the hero/about/gallery image URLs.
+  All images have a colour fallback if a URL is missing.
+============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#231f1c;
+  --ink-soft:#5b524c;
+  --cream:#ffffff;
+  --cream-deep:#f4efe8;
+  --teal:#1f6b63;
+  --teal-deep:#164e48;
+  --teal-soft:#e3efec;
+  --clay:#d98352;
+  --clay-soft:#f6e3d4;
+  --line:#ece6dd;
+  --shadow:0 22px 50px -22px rgba(35,31,28,.35);
+  --shadow-sm:0 10px 28px -16px rgba(35,31,28,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.08;letter-spacing:-.01em;font-weight:600}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+section{position:relative}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-weight:600;font-size:1rem;
+  padding:.95rem 1.6rem;border-radius:999px;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--clay);color:#fff;box-shadow:0 12px 26px -12px rgba(217,131,82,.8)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(217,131,82,.9)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.btn-dark{background:var(--teal);color:#fff;box-shadow:0 12px 26px -14px rgba(31,107,99,.9)}
+.btn-dark:hover{transform:translateY(-2px);background:var(--teal-deep)}
+
+/* header */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+header.scrolled{border-color:var(--line);box-shadow:0 6px 24px -18px rgba(35,31,28,.5)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.35rem}
+.brand .paw{
+  width:38px;height:38px;border-radius:12px;background:var(--teal);
+  display:grid;place-items:center;color:var(--cream);flex:none;
+}
+.brand .paw svg{width:20px;height:20px}
+.nav-links{display:flex;gap:2rem;align-items:center;font-weight:500;font-size:.96rem}
+.nav-links a{color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--teal)}
+.nav-cta{display:flex;align-items:center;gap:1rem}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* hero */
+.hero{padding:56px 0 70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal);background:var(--teal-soft);
+  padding:.45rem .9rem;border-radius:999px;margin-bottom:1.4rem;
+}
+.hero h1{font-size:clamp(2.4rem,4.6vw,3.55rem);margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero-sub{font-size:1.12rem;color:var(--ink-soft);max-width:30rem;margin-bottom:2rem}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+.hero-trust{display:flex;align-items:center;gap:.85rem;margin-top:1.9rem}
+.stars{color:var(--clay);font-size:1.05rem;letter-spacing:.1em}
+.hero-trust span{font-size:.95rem;color:var(--ink-soft);font-weight:500}
+
+/* hero image stack */
+.hero-media{position:relative}
+.hero-photo{
+  border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
+  aspect-ratio:4/5;
+  background:linear-gradient(140deg,var(--teal),var(--teal-deep));
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-badge{
+  position:absolute;left:-22px;bottom:34px;
+  background:#fff;border-radius:18px;padding:.9rem 1.1rem;
+  box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:.75rem;
+  animation:floaty 5s ease-in-out infinite;
+}
+.hero-badge .ic{width:42px;height:42px;border-radius:12px;background:var(--clay-soft);display:grid;place-items:center;color:var(--clay);flex:none}
+.hero-badge .ic svg{width:22px;height:22px}
+.hero-badge b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem}
+.hero-badge small{color:var(--ink-soft)}
+.hero-tag{
+  position:absolute;right:-14px;top:30px;background:var(--teal);color:#fff;
+  padding:.6rem 1rem;border-radius:14px;font-weight:600;font-size:.9rem;
+  box-shadow:var(--shadow-sm);animation:floaty 6s ease-in-out infinite .4s;
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-photo{aspect-ratio:4/3}
+  .hero-badge{left:6px}
+}
+
+/* generic section heading */
+.kicker{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);margin-bottom:.7rem}
+.sec-title{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:1rem}
+.lead{color:var(--ink-soft);font-size:1.08rem;max-width:38rem}
+
+/* about */
+.about{padding:34px 0}
+.about-card{
+  background:#fff;border-radius:30px;padding:0;overflow:hidden;
+  display:grid;grid-template-columns:.85fr 1.15fr;box-shadow:var(--shadow);
+}
+.about-img{background:linear-gradient(155deg,var(--teal-soft),var(--clay-soft));min-height:360px;display:grid;place-items:center;position:relative;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+/* reusable image placeholder */
+.ph{display:flex;flex-direction:column;align-items:center;gap:.7rem;color:var(--teal);text-align:center;padding:1.4rem;z-index:1}
+.ph svg{width:48px;height:48px;opacity:.85}
+.ph span{font-weight:600;font-size:.88rem;letter-spacing:.02em;color:var(--ink-soft)}
+.about-body{padding:46px 50px}
+.about-body p{color:var(--ink-soft);margin-top:1rem;max-width:34rem}
+@media(max-width:760px){.about-card{grid-template-columns:1fr}.about-body{padding:34px 28px}}
+
+/* why */
+.why{padding:64px 0 30px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:2.4rem}
+.why-card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.why-card .ic{width:50px;height:50px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;margin-bottom:1.1rem}
+.why-card .ic svg{width:26px;height:26px}
+.why-card h3{font-size:1.25rem;margin-bottom:.5rem}
+.why-card p{color:var(--ink-soft);font-size:.98rem}
+@media(max-width:760px){.why-grid{grid-template-columns:1fr}}
+
+/* lifestyle gallery */
+.gallery{padding:64px 0 14px}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:2.2rem}
+.gal-tile{aspect-ratio:1;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(150deg,var(--teal-soft),var(--clay-soft));display:grid;place-items:center;transition:transform .3s ease}
+.gal-tile:hover{transform:translateY(-5px)}
+.gal-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+@media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* reviews */
+.reviews{padding:64px 0;background:var(--teal-deep);color:var(--cream);margin-top:46px;border-radius:42px}
+.reviews .kicker{color:var(--clay-soft)}
+.reviews .sec-title{color:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:2.4rem}
+.rev-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:28px;backdrop-filter:blur(4px)}
+.rev-card .quote{font-family:'Bricolage Grotesque',sans-serif;font-size:2.6rem;line-height:.5;color:var(--clay);height:1.1rem}
+.rev-card p{margin:1.1rem 0;font-size:1.02rem;color:#f3ece1}
+.rev-card cite{font-style:normal;font-weight:600;font-size:.92rem;color:var(--clay-soft)}
+.rev-card .gstars{color:var(--clay);letter-spacing:.12em;margin-bottom:.4rem;display:block}
+@media(max-width:760px){.rev-grid{grid-template-columns:1fr}.reviews{border-radius:28px}}
+
+/* services */
+.services{padding:70px 0 30px}
+.svc-note{color:var(--ink-soft);margin:1rem 0 2.4rem;max-width:40rem}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px;text-align:center;transition:border-color .25s, transform .25s}
+.svc:hover{border-color:var(--clay);transform:translateY(-4px)}
+.svc h3{font-size:1.15rem;margin-bottom:.35rem}
+.svc .price{font-family:'Bricolage Grotesque',sans-serif;font-size:1.7rem;color:var(--teal);font-weight:600}
+.addons{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.addons span{background:var(--cream-deep);border-radius:999px;padding:.45rem .95rem;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+@media(max-width:760px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* hours + cta band */
+.band{padding:60px 0}
+.band-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:28px}
+.hours-card,.cta-card{border-radius:28px;padding:40px}
+.hours-card{background:#fff;border:1px solid var(--line)}
+.hours-card h3{font-size:1.5rem;margin-bottom:1.2rem}
+.hours-row{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px dashed var(--line);font-weight:500}
+.hours-row:last-child{border-bottom:none}
+.hours-row span:last-child{color:var(--ink-soft)}
+.cta-card{background:linear-gradient(150deg,var(--teal),var(--teal-deep));color:#fff;display:flex;flex-direction:column;justify-content:center}
+.cta-card h3{font-size:1.7rem;color:#fff;margin-bottom:.6rem}
+.cta-card p{color:#dcebe7;margin-bottom:1.6rem}
+.cta-card .phone{font-family:'Bricolage Grotesque',sans-serif;font-size:1.9rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.4rem}
+.cta-card .area{font-size:.95rem;color:#cfe3df;margin-top:1.2rem}
+@media(max-width:760px){.band-grid{grid-template-columns:1fr}}
+
+/* footer */
+footer{padding:46px 0 40px;text-align:center;border-top:1px solid var(--line);margin-top:50px}
+.foot-note{color:var(--ink-soft);font-size:.9rem;margin-top:.8rem}
+.proposal{display:inline-block;background:var(--clay-soft);color:var(--clay);font-weight:600;font-size:.82rem;padding:.4rem .9rem;border-radius:999px;margin-bottom:1rem}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-badge,.hero-tag{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="paw"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c2.5 0 4.5 1.8 4.5 4 0 1.1-.9 2-2 2-1 0-1.6-.5-2.5-.5s-1.5.5-2.5.5c-1.1 0-2-.9-2-2 0-2.2 2-4 4.5-4Zm-5.3-2.2c1 .3 1.5 1.6 1.1 2.9-.4 1.3-1.5 2.1-2.5 1.8s-1.5-1.6-1.1-2.9c.4-1.3 1.5-2.1 2.5-1.8Zm10.6 0c1-.3 2.1.5 2.5 1.8.4 1.3-.1 2.6-1.1 2.9s-2.1-.5-2.5-1.8c-.4-1.3.1-2.6 1.1-2.9ZM9 5c1 0 1.7 1.1 1.7 2.5S10 10 9 10s-1.7-1.1-1.7-2.5S8 5 9 5Zm6 0c1 0 1.7 1.1 1.7 2.5S16 10 15 10s-1.7-1.1-1.7-2.5S14 5 15 5Z"/></svg></span>
+      <!-- [BIZ_NAME] -->Spot On Grooming
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#why">Why us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#services">Pricing</a>
+      <a href="#book">Hours</a>
+    </nav>
+    <div class="nav-cta">
+      <!-- [PHONE_RAW] / [PHONE] -->
+      <a class="btn btn-dark" href="tel:+12083239095">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Call Now
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">★ Boise &middot; Dog Grooming</span>
+      <!-- HEADLINE: strongest review or value prop -->
+      <h1>Grooming your dog will actually <em>look forward to</em>.</h1>
+      <p class="hero-sub">Professional, kind, breed-aware grooming in Boise with Rachel. Calm handling, beautiful results, and regular appointments booked in advance.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+12083239095">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Call (208) 323-9095
+        </a>
+        <a class="btn btn-ghost" href="#services">View pricing</a>
+      </div>
+      <div class="hero-trust">
+        <span class="stars">★★★★★</span>
+        <span>Trusted by 40+ local dog owners</span>
+      </div>
+    </div>
+
+    <div class="hero-media reveal">
+      <div class="hero-photo">
+        <!-- HERO IMAGE: swap src for your own stock -->
+        <img src="https://images.pexels.com/photos/19145901/pexels-photo-19145901.jpeg?auto=compress&cs=tinysrgb&w=900"
+             alt="Freshly groomed dog in a clean salon"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="hero-badge">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><b>Stress-free</b><small>calm, gentle handling</small></div>
+      </div>
+      <div class="hero-tag">35+ yrs experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap reveal">
+    <div class="about-card">
+      <div class="about-img">
+        <!-- Optional: drop a non-person stock photo here (e.g. a happy dog). Leave as-is for a clean icon placeholder. -->
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14c2.5 0 4.5 1.8 4.5 4 0 1.1-.9 2-2 2-1 0-1.6-.5-2.5-.5s-1.5.5-2.5.5c-1.1 0-2-.9-2-2 0-2.2 2-4 4.5-4Zm-5.3-2.2c1 .3 1.5 1.6 1.1 2.9-.4 1.3-1.5 2.1-2.5 1.8s-1.5-1.6-1.1-2.9c.4-1.3 1.5-2.1 2.5-1.8Zm10.6 0c1-.3 2.1.5 2.5 1.8.4 1.3-.1 2.6-1.1 2.9s-2.1-.5-2.5-1.8c-.4-1.3.1-2.6 1.1-2.9ZM9 5c1 0 1.7 1.1 1.7 2.5S10 10 9 10s-1.7-1.1-1.7-2.5S8 5 9 5Zm6 0c1 0 1.7 1.1 1.7 2.5S16 10 15 10s-1.7-1.1-1.7-2.5S14 5 15 5Z"/></svg>
+          <span>Your photo here</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <span class="kicker">About</span>
+        <!-- [GROOMER] -->
+        <h2 class="sec-title">Meet Rachel</h2>
+        <p>Rachel offers professional, kind, breed-aware dog grooming in Boise — with over 35 years of combined experience in grooming and animal handling. Every appointment is calm, low-stress and personal to your dog.</p>
+        <p>Regular appointments can be scheduled in advance for the whole year, so your dog is always cared for — and always looking their best.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="why" id="why">
+  <div class="wrap reveal">
+    <span class="kicker">Why Spot On</span>
+    <h2 class="sec-title">Care your dog can feel.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 15 2 2 4-4"/><path d="M22 12c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2s10 4.5 10 10Z"/></svg></span>
+        <h3>Professional &amp; caring</h3>
+        <p>Decades of experience, current certifications, and meticulous attention to every single groom.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span>
+        <h3>Kind &amp; gentle</h3>
+        <p>A calm, safe environment is our #1 goal — with eco-friendly, pet-safe products from start to finish.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+        <h3>Breed-specific expertise</h3>
+        <p>From Westies to Airedales — your dog leaves looking like the breed they're meant to be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIFESTYLE GALLERY (placeholder tiles — swap for your own stock photos) ===== -->
+<section class="gallery">
+  <div class="wrap reveal">
+    <span class="kicker">The gallery</span>
+    <h2 class="sec-title">Happy, freshly-groomed pups.</h2>
+    <div class="gal-grid">
+      <!-- To add a photo: replace the .ph block with <img src="YOUR_URL" alt=""> -->
+      <div class="gal-tile">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span>Your photo here</span></div>
+      </div>
+      <div class="gal-tile">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span>Your photo here</span></div>
+      </div>
+      <div class="gal-tile">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span>Your photo here</span></div>
+      </div>
+      <div class="gal-tile">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span>Your photo here</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews" id="reviews">
+  <div class="wrap reveal">
+    <span class="kicker">Reviews</span>
+    <h2 class="sec-title">What Boise dog owners say.</h2>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <span class="gstars">★★★★★</span>
+        <span class="quote">&ldquo;</span>
+        <p>Rachel is professional and caring. Above all, she is kind to my animals.</p>
+        <cite>— Happy customer</cite>
+      </div>
+      <div class="rev-card">
+        <span class="gstars">★★★★★</span>
+        <span class="quote">&ldquo;</span>
+        <p>Not only did my Westie look like a Westie — Scarlet was treated with kindness. My other three Westies are looking forward to spending time with these knowledgeable folks.</p>
+        <cite>— Westie owner</cite>
+      </div>
+      <div class="rev-card">
+        <span class="gstars">★★★★★</span>
+        <span class="quote">&ldquo;</span>
+        <p>Our two Airedales look great after each grooming. We really enjoy the regular appointments set up in advance for the year. Great job, great service!</p>
+        <cite>— Airedale owner</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="wrap reveal">
+    <span class="kicker">Services</span>
+    <h2 class="sec-title">Full grooms, by size.</h2>
+    <p class="svc-note">Every full groom includes bathing, drying, brush-out, cut &amp; style, nail clipping, and ear cleaning. Optional add-ons available on request.</p>
+    <div class="svc-grid">
+      <div class="svc"><h3>Toy / Small</h3><div class="price">$39–60</div></div>
+      <div class="svc"><h3>Medium</h3><div class="price">$40–80</div></div>
+      <div class="svc"><h3>Large</h3><div class="price">$60–120</div></div>
+      <div class="svc"><h3>X-Large</h3><div class="price">$100–200</div></div>
+    </div>
+    <div class="addons">
+      <span>+ Teeth brushing $8</span>
+      <span>+ Flea &amp; tick bath $10–15</span>
+      <span>+ Nail polish $10</span>
+      <span>+ De-matting $5 / 10 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOURS + CTA ===== -->
+<section class="band" id="book">
+  <div class="wrap band-grid reveal">
+    <div class="hours-card">
+      <h3>Open Tuesday–Saturday</h3>
+      <div class="hours-row"><span>Tuesday – Saturday</span><span>9am – 6pm</span></div>
+      <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+      <div class="hours-row"><span>Monday</span><span>Closed</span></div>
+    </div>
+    <div class="cta-card">
+      <h3>Book your dog's next groom.</h3>
+      <p>A quick call is all it takes to get on the calendar.</p>
+      <a class="phone" href="tel:+12083239095">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+        (208) 323-9095
+      </a>
+      <a class="btn btn-primary" href="tel:+12083239095" style="align-self:flex-start">Call Now</a>
+      <p class="area">Service area: Boise &amp; the Treasure Valley</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <span class="proposal">Website proposal created for Spot On Grooming · June 2026</span>
+    <div class="brand" style="justify-content:center">
+      <span class="paw"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c2.5 0 4.5 1.8 4.5 4 0 1.1-.9 2-2 2-1 0-1.6-.5-2.5-.5s-1.5.5-2.5.5c-1.1 0-2-.9-2-2 0-2.2 2-4 4.5-4Zm-5.3-2.2c1 .3 1.5 1.6 1.1 2.9-.4 1.3-1.5 2.1-2.5 1.8s-1.5-1.6-1.1-2.9c.4-1.3 1.5-2.1 2.5-1.8Zm10.6 0c1-.3 2.1.5 2.5 1.8.4 1.3-.1 2.6-1.1 2.9s-2.1-.5-2.5-1.8c-.4-1.3.1-2.6 1.1-2.9ZM9 5c1 0 1.7 1.1 1.7 2.5S10 10 9 10s-1.7-1.1-1.7-2.5S8 5 9 5Zm6 0c1 0 1.7 1.1 1.7 2.5S16 10 15 10s-1.7-1.1-1.7-2.5S14 5 15 5Z"/></svg></span>
+      Spot On Grooming
+    </div>
+    <p class="foot-note">Boise, Idaho &middot; Dog Grooming &middot; Made by LocalWebReady</p>
+  </div>
+</footer>
+
+<script>
+// sticky header shadow
+const head=document.querySelector('header');
+addEventListener('scroll',()=>head.classList.toggle('scrolled',scrollY>10));
+// scroll reveal
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%2?.08:0)+'s';io.observe(el)});
+</script>
+</body>
+</html>
